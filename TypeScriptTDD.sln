@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Web
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeScriptTDDWebApp", "TypeScriptHTMLApp1\TypeScriptTDDWebApp.csproj", "{0A4202CD-9180-43A4-BA72-1031566CD9D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeScriptTDDWebApp", "TypeScriptTDD\TypeScriptTDDWebApp.csproj", "{0A4202CD-9180-43A4-BA72-1031566CD9D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

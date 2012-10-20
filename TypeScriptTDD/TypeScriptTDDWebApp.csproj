@@ -20,30 +20,22 @@
     <UpgradeBackupLocation />
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="app.css" />
-    <Content Include="ListManagerTests.js" />
-    <Content Include="ListManagerTests.html" />
-    <Content Include="default.htm" />
-    <Content Include="app.js">
-      <DependentUpon>app.ts</DependentUpon>
-    </Content>
-    <Content Include="jquery-1.7.1.min.js" />
-    <Content Include="jquery.d.ts" />
+    <Content Include="JsTestSuites\ListManagerTests.js" />
+    <Content Include="JsTestSuites\ListManagerTests.html" />
+    <Content Include="JsThirdParty\jquery-1.7.1.min.js" />
+    <Content Include="JsThirdParty\jquery.d.ts" />
     <TypeScriptCompile Include="ListManager.ts" />
     <Content Include="ListManager.js">
       <DependentUpon>ListManager.ts</DependentUpon>
     </Content>
-    <Content Include="qunit-1.10.0.css" />
-    <Content Include="qunit-1.10.0.js" />
-    <Content Include="Test.html" />
-    <Content Include="Test.js" />
+    <Content Include="JsTestSuites\qunit\qunit-1.10.0.css" />
+    <Content Include="JsTestSuites\qunit\qunit-1.10.0.js" />
+    <Content Include="JsTestSuites\Test.html" />
+    <Content Include="JsTestSuites\Test.js" />
     <Content Include="TestTypesScript.js">
       <DependentUpon>TestTypesScript.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="TestTypesScript.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="app.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />

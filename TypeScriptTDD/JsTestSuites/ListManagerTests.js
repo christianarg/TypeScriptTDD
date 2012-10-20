@@ -1,6 +1,6 @@
-﻿/// <reference path="ListManager.js" />
-/// <reference path="qunit-1.10.0.js" />
-/// <reference path="jquery-1.7.1.min.js" />
+﻿/// <reference path="../ListManager.js" />
+/// <reference path="qunit/qunit-1.10.0.js" />
+/// <reference path="../JsThirdParty/jquery-1.7.1.min.js" />
 
 // TODO: No me acuerdo como se hace el init por módulo qunit
 function init() {

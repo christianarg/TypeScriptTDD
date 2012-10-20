@@ -1,6 +1,6 @@
-﻿/// <reference path="TestTypesScript.js" />
-/// <reference path="qunit-1.10.0.js" />
-/// <reference path="jquery-1.7.1.min.js" />
+﻿/// <reference path="../TestTypesScript.js" />
+/// <reference path="qunit/qunit-1.10.0.js" />
+/// <reference path="../JsThirdParty/jquery-1.7.1.min.js" />
 
 test("Hello world", function () {
     var prueba = new Prueba.HelloWorld();

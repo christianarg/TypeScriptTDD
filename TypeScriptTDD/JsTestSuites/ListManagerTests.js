@@ -53,6 +53,11 @@ test("List from two paragraphs (separated by <br /> tag) with an inner tag that 
     deepEqual(listHtml, '<ul><li>hola</li><li>que <b>tal</b></li></ul>');
 });
 
+test("Convert Br into P", function () {
+    var listHtml = listManager.convert_BrTags_Into_PTags("Hola<br />que <b>tal</b><br />");
+    deepEqual(listHtml, '<p>Hola</p><p>que <b>tal</b></p>');
+
+});
 //test("jquery reaserch", function () {
 //    var container = $('.container');
 //    var contents = container.contents();

@@ -43,6 +43,16 @@ test("List from two paragraphs (separated by <br /> tag)", function () {
 });
 
 
+test("List from paragraphs (separated by <p> tag) with an inner tag that should not be modified", function () {
+    var listHtml = listManager.createList("<p>hola <b>mostro</b></p>");
+    deepEqual(listHtml, '<ul><li>hola <b>mostro</b></li></ul>');
+});
+
+test("List from two paragraphs (separated by <br /> tag) with an inner tag that should not be modified", function () {
+    var listHtml = listManager.createList("hola<br />que <b>tal</b><br />");
+    deepEqual(listHtml, '<ul><li>hola</li><li>que <b>tal</b></li></ul>');
+});
+
 //test("jquery reaserch", function () {
 //    var container = $('.container');
 //    var contents = container.contents();

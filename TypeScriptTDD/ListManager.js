@@ -9,15 +9,20 @@ var RichEdition;
             }
             var container = $("<listmarker></listmarker>").append(html);
             var contents = container.contents();
-            contents.filter(function () {
+            contents.filter('br').remove();
+            var textNodes = contents.filter(function () {
                 return this.nodeType == 3;
-            }).wrap('<li></li>').end().filter('br').remove();
+            });
+            $.each(textNodes, function (i, textNode) {
+                var jtextNode = $(textNode);
+                jtextNode.wrap("<li></li>");
+            });
             var tags = contents.filter(function () {
                 return this.nodeType == 1;
             });
             $.each(tags, function (i, tag) {
                 var jtag = $(tag);
-                jtag.replaceWith('<li>' + jtag.text() + '</li>');
+                jtag.replaceWith('<li>' + jtag.html() + '</li>');
             });
             list.append(container.html());
             return list[0].outerHTML;

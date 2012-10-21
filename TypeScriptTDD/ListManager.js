@@ -10,13 +10,9 @@ var RichEdition;
             var brCleanHtml = this.convert_BrTags_Into_PTags(html);
             var container = $("<listmarker></listmarker>").append(brCleanHtml);
             var contents = container.contents();
-            var tags = contents.filter(function () {
-                return this.nodeType == 1;
-            });
+            var tags = this.filterByNodeType(contents, RichEdition.NodeType.Tag);
             if(tags.length == 0) {
-                contents.filter(function () {
-                    return this.nodeType == 3;
-                }).wrap('<li></li>');
+                this.filterByNodeType(contents, RichEdition.NodeType.TextNode).wrap('<li></li>');
             } else {
                 $.each(tags, function (i, tag) {
                     var jtag = $(tag);
@@ -39,8 +35,20 @@ var RichEdition;
             }
             return result;
         };
+        ListManager.prototype.filterByNodeType = function (jelement, nodeType) {
+            return jelement.filter(function () {
+                return this.nodeType == nodeType;
+            });
+        };
         return ListManager;
     })();
     RichEdition.ListManager = ListManager;    
+    var NodeType = (function () {
+        function NodeType() { }
+        NodeType.TextNode = 3;
+        NodeType.Tag = 1;
+        return NodeType;
+    })();
+    RichEdition.NodeType = NodeType;    
 })(RichEdition || (RichEdition = {}));
 

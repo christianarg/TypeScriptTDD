@@ -23,19 +23,18 @@ module RichEdition {
             // Convertir <br /> en <p></p> para un tratamiento unificado y simplificado
             var brCleanHtml = this.convert_BrTags_Into_PTags(html);
 
-            // para poder realizar gestiones con jQuery en múltiples casos
+            // para poder utili jQuery en múltiples casos y evitar casos especiales
             // "envolvemos" todo en un tag inventado que luego descartamos
             var container = $("<listmarker></listmarker>").append(brCleanHtml);
             var contents = container.contents();
             
-            // Obtener todos los nodos tag, y reemplazarlos por li
-            var tags = contents.filter(function () {
-                return this.nodeType == 1;
-            });
+            // Obtener todos los nodos tag, para reemplazarlos por li
+            var tags = this.filterByNodeType(contents, RichEdition.NodeType.Tag);
+
             if (tags.length == 0) {  // Caso particular. Se trata de un nodo de texto
-                contents.filter(function () { // Obtener nodos tipo texto y envolverlos con li
-                    return this.nodeType == 3;
-                }).wrap('<li></li>')
+                // Obtener nodos tipo texto y envolverlos con li
+                this.filterByNodeType(contents, RichEdition.NodeType.TextNode)
+                    .wrap('<li></li>')
             }
             else {  // Caso general, varios tags.Reemplazar los tags primer nivel por li's
                 $.each(tags, function (i, tag) {
@@ -61,8 +60,15 @@ module RichEdition {
             }
             return result;
         }
-
-        
+        filterByNodeType(jelement: JQuery, nodeType: number) {
+            return jelement.filter(function () {
+                    return this.nodeType == nodeType;
+                })
+        }
+    }
+    export class NodeType {
+        static TextNode = 3;
+        static Tag = 1;
     }
 }
 

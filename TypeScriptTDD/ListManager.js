@@ -3,35 +3,23 @@ var RichEdition;
     var ListManager = (function () {
         function ListManager() { }
         ListManager.prototype.createList = function (html) {
+            var list = $("<ul></ul>");
             if(html == null || html == "") {
-                return '<ul><li></li></ul>';
+                return list.append("<li></li>")[0].outerHTML;
             }
-            var jinput = $(html);
-            var siblings = jinput.siblings();
-            var tags = new Array();
-            if(siblings.length == 0) {
-                if(jinput.length == 0) {
-                    tags.push(html);
-                } else {
-                    tags.push(jinput.text());
-                }
-            } else {
-                for(var i = 0; i < siblings.length; i++) {
-                    tags.push(siblings[i]);
-                }
-            }
-            var list = $('<ul></ul>');
-            for(var i = 0; i < tags.length; i++) {
-                var tag = tags[i];
-                var listItem = $('<li></li>');
+            var container = $("<listmarker></listmarker>").append(html);
+            var contents = container.contents();
+            contents.filter(function () {
+                return this.nodeType == 3;
+            }).wrap('<li></li>').end().filter('br').remove();
+            var tags = contents.filter(function () {
+                return this.nodeType == 1;
+            });
+            $.each(tags, function (i, tag) {
                 var jtag = $(tag);
-                if(jtag.length == 0) {
-                    listItem.html(tag);
-                } else {
-                    listItem.html(jtag.html());
-                }
-                list.append(listItem);
-            }
+                jtag.replaceWith('<li>' + jtag.text() + '</li>');
+            });
+            list.append(container.html());
             return list[0].outerHTML;
         };
         return ListManager;

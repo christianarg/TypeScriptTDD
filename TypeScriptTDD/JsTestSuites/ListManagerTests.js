@@ -38,3 +38,24 @@ test("List from two paragraphs (separated by <p> tag)", function () {
     deepEqual(listHtml, '<ul><li>hola</li><li>que tal</li></ul>');
 });
 
+test("List from two paragraphs (separated by <br /> tag)", function () {
+    var listManager = new RichEdition.ListManager();
+    var listHtml = listManager.createList("hola<br />que tal<br />");
+    deepEqual(listHtml, '<ul><li>hola</li><li>que tal</li></ul>');
+});
+
+
+//test("jquery reaserch", function () {
+//    var container = $('.container');
+//    var contents = container.contents();
+
+//    contents.filter(function () {
+//        return this.nodeType == 3;
+//    })
+//        .wrap('<p></p>')
+//        .end()
+//        .filter('br')
+//          .remove();
+
+//    var kito = container.html();
+//});

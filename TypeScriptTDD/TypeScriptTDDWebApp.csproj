@@ -20,6 +20,10 @@
     <UpgradeBackupLocation />
   </PropertyGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="JQueryUtils.ts" />
+    <Content Include="JQueryUtils.js">
+      <DependentUpon>JQueryUtils.ts</DependentUpon>
+    </Content>
     <Content Include="JsTestSuites\ListManagerTests.js" />
     <Content Include="JsTestSuites\ListManagerTests.html" />
     <Content Include="JsThirdParty\jquery-1.7.1.min.js" />
